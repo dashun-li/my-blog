@@ -1,0 +1,55 @@
+<%- include("./header.ejs") %>
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed">
+ <div class="am-u-md-8 am-u-sm-12">
+    <% for(var i=0;i<datas.length;i++){%>
+        <article class="am-g blog-entry-article">
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <span><a href="" class="blog-color"><%= datas[i].classify%> &nbsp;</a></span>
+                <span> 李大顺 &nbsp;</span>
+                <span><%= datas[i].time%></span>
+                <h1><a href="article.html?id=<%= datas[i]._id%>&classify=<%=datas[i].classify%>"><%= datas[i].title%></a></h1>
+                <p>
+                    <%= datas[i].abstract%>
+                </p>
+                <p><a href="article.html?id=<%= datas[i]._id%>&classify=<%=datas[i].classify%>" class="blog-continue">阅读全文</a></p>
+            </div>
+        </article>
+        <%}%>
+        <ul class="am-pagination">
+            <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
+            <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
+        </ul>
+    </div>
+     <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
+    <!-- 标签 -->
+    <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+        <h2 class="blog-title">
+            <span>标签</span>
+        </h2>
+        <div class="am-u-sm-12 blog-clear-padding">
+            <a href="" class="blog-tag">javascript</a>
+            <a href="" class="blog-tag">Node</a>
+            <a href="" class="blog-tag">HTML/CSS</a>
+            <a href="" class="blog-tag">随笔</a>
+            <a href="" class="blog-tag">其它</a>
+        </div>
+    </div>
+    <!-- 标签 结束-->
+    </div>
+
+</div>
+<!-- content end -->
+<%- include("./foot.ejs") %>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<!-- <script src="assets/js/app.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,133 @@
+<%- include("./header.ejs") %>
+
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+        <div class="am-u-md-8 am-u-sm-12">
+        <article class="am-article blog-article-p">
+            <div class="am-article-hd">
+            <h1 class="am-article-title blog-text-center"><%= data.data.title%></h1>
+            <p class="am-article-meta blog-text-center">
+                <span><a href="category.html?classify=<%= data.data.classify%>" id='classBox' class="blog-color"><%= data.data.classify%></a>&nbsp;</span>-
+                <span><a href="#"> 李大顺 &nbsp;</a></span>-
+                <span><a href="#"><%= data.data.time%></a></span>
+            </p>
+            </div>        
+            <div class="am-article-bd">
+                <%- data.data.con%>
+            </div>
+      </article>
+        
+        <div class="am-g blog-article-widget blog-article-margin">
+          <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
+            <span class="am-icon-tags"> &nbsp;</span><a href="#"><%= data.data.tags%></a> 
+            <hr>
+            <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+            <a href=""><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
+            <a href=""><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="am-g blog-author blog-article-margin">
+          <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
+          <h3><span>作者 &nbsp;: &nbsp;</span><span class="blog-color">李大顺</span></h3>
+            <p>
+                有时候真实比小说更加荒诞，因为虚构是在一定逻辑下进行的，
+                而现实往往毫无逻辑可言。
+            </p>
+          </div>
+        </div>
+       
+        
+        <hr>
+        <!-- 评论区 -->
+        <form class="am-form am-g">
+            <h3 class="blog-comment">评论</h3>
+          <fieldset>
+            <div class="am-form-group am-u-sm-4 blog-clear-left">
+              <input type="text" class="" placeholder="名字">
+            </div>
+            <div class="am-form-group am-u-sm-4">
+              <input type="email" class="" placeholder="邮箱">
+            </div>
+
+            <div class="am-form-group am-u-sm-4 blog-clear-right">
+              <input type="password" class="" placeholder="网站">
+            </div>
+        
+            <div class="am-form-group">
+              <textarea class="" rows="5" placeholder="评论区"></textarea>
+            </div>
+        
+            <p><button type="submit" class="am-btn am-btn-default">发表评论</button></p>
+          </fieldset>
+        </form>
+        <!-- 评论区结束 -->
+        <hr>
+    </div>
+
+    <div class="am-u-md-4 am-u-sm-12 blog-sidebar ">
+        <!-- 目录 -->
+        <div class="blog-sidebar-widget blog-bor blog-con" data-am-scrollspynav="{offsetTop: 0}" data-am-sticky="{top:20}">
+                    <h2 class="blog-text-center blog-title"><span>目录</span></h2>
+                    <h4>标题1</h4>
+                    <h4>标题1</h4>
+                    <h4>标题1</h4>
+                    <h4>标题1</h4>
+        </div>
+        <!-- 目录 结束-->
+        
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-title">
+                <span>相关文章</span>
+            </h2>
+            <ul class="am-list" id='artlist'>
+                <% for(var i=0;i<data.data1.length;i++){%>
+              <li>
+                    <a href="article.html?id=<%= data.data1[i]._id%>&classify=<%= data.data1[i].classify%>"><%= data.data1[i].title%></a>
+                </li> 
+                <%}%>
+               
+            </ul>
+        </div>
+    </div>
+</div>
+    
+<!-- content end -->
+<%- include("./foot.ejs") %>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<!-- <script src="assets/js/app.js"></script> -->
+
+
+<script>
+    // 返回顶部按钮的响应式设置
+    (function(){
+       
+        var wid = document.body.clientWidth;
+        if(wid <= 640){
+            $(".blog-sidebar").addClass('am-hide')
+        }else{
+            $(".blog-sidebar").removeClass('am-hide')
+        };
+        if (wid >= 1000) {
+            $(".am-gotop").css({'right':120})
+        } else {
+            $(".am-gotop").css({ 'right': 20 })
+        };
+        
+    })();
+    
+
+       
+  
+
+</script>
+</body>
+</html>
