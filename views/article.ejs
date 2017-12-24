@@ -8,7 +8,7 @@
             <h1 class="am-article-title blog-text-center"><%= data.data.title%></h1>
             <p class="am-article-meta blog-text-center">
                 <span><a href="category.html?classify=<%= data.data.classify%>" id='classBox' class="blog-color"><%= data.data.classify%></a>&nbsp;</span>-
-                <span><a href="#"> 李大顺 &nbsp;</a></span>-
+                <span ><a href="#"> 李大顺 &nbsp;</a></span>-
                 <span><a href="#"><%= data.data.time%></a></span>
             </p>
             </div>        
@@ -19,7 +19,13 @@
         
         <div class="am-g blog-article-widget blog-article-margin">
           <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-            <span class="am-icon-tags"> &nbsp;</span><a href="#"><%= data.data.tags%></a> 
+            <span class="am-icon-tags"> &nbsp;</span>
+            
+                <% var tag = data.data.tags.split(",") %>
+                <%for(var i=0;i<tag.length;i++) {%>
+                   <a href="#"><%=tag[i]%></a> 
+                <%}%>
+             
             <hr>
             <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
             <a href=""><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
@@ -29,7 +35,7 @@
         <hr>
         <div class="am-g blog-author blog-article-margin">
           <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
-          <h3><span>作者 &nbsp;: &nbsp;</span><span class="blog-color">李大顺</span></h3>
+          <h3><span >作者 &nbsp;: &nbsp;</span><span  class='author'>李大顺</span></h3>
             <p>
                 有时候真实比小说更加荒诞，因为虚构是在一定逻辑下进行的，
                 而现实往往毫无逻辑可言。
@@ -67,12 +73,11 @@
 
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar ">
         <!-- 目录 -->
-        <div class="blog-sidebar-widget blog-bor blog-con" data-am-scrollspynav="{offsetTop: 0}" data-am-sticky="{top:20}">
-                    <h2 class="blog-text-center blog-title"><span>目录</span></h2>
-                    <h4>标题1</h4>
-                    <h4>标题1</h4>
-                    <h4>标题1</h4>
-                    <h4>标题1</h4>
+        <div  class="blog-sidebar-widget blog-bor blog-con" data-am-scrollspynav="{offsetTop: 0}" data-am-sticky="{top:20}">
+                <h2 class="blog-text-center blog-title"><span>目录</span></h2>
+                <div id='contents'>
+                    
+                </div> 
         </div>
         <!-- 目录 结束-->
         
@@ -104,7 +109,7 @@
 <![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 <!-- <script src="assets/js/app.js"></script> -->
-
+<script src="assets/js/article.js"></script>
 
 <script>
     // 返回顶部按钮的响应式设置
@@ -123,9 +128,11 @@
         };
         
     })();
-    
 
-       
+
+(function(){
+    add_artcle_list()
+})();
   
 
 </script>

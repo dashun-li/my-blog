@@ -2,7 +2,7 @@
 <!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed">
     <div class="am-u-md-8 am-u-sm-12">
-        <%for (var i=0;i<data.length;i++) {%>
+        <%for (var i=0;i<data.length-2;i++) {%>
         <article class="am-g blog-entry-article">
             <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
                 <span>
@@ -12,14 +12,14 @@
                 <span><%=data[i].time %></span>
                
                 <h1>
-<a href="article.html?id=<%=data[i]._id%>&classify=<%=data[i].classify%>">
-    <%=data[i].title%>
-</a>
+                <a href="article.html?id=<%=data[i]._id%>&classify=<%=data[i].classify%>">
+                    <%=data[i].title%>
+                </a>
                 </h1>
                 <div class='con'>
                    <p><%=data[i].abstract %></p> 
                     <p>
-<a href="article.html?id=<%=data[i]._id%>&classify=<%=data[i].classify%>" class="blog-continue">阅读全文</a>
+                        <a href="article.html?id=<%=data[i]._id%>&classify=<%=data[i].classify%>" class="blog-continue">阅读全文</a>
                     </p>
                 </div>
                
@@ -27,10 +27,30 @@
         </article>
         <%}%>       
         <!-- 换页按钮 -->
-        <ul class="am-pagination">
-            <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
-            <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
-        </ul>
+    <ul class="am-pagination">
+        <li>
+            <% var pagecount= data.pop().pagecount  %>
+            <% var page= data.pop().page%>
+        <span>Page <span id='pg'>
+            <%= page %>
+        </span> of  <%= pagecount %>
+        </span>
+        </li>
+        <li class='first'>
+            <a href="index.html?page=<%= page-1 %>">« Prev</a>
+        </li>
+        <%for(var i=0;i<pagecount;i++) {%>
+            <li class='pages'>
+                <a href="index.html?page=<%= i+1 %>"><%= i+1%></a>
+            </li>
+        <%}%>
+        <li class='next'>
+            <a href="index.html?page=<%= Number(page)+1 %>">Next »</a>
+        </li>
+        <li class='last'>
+            <a href="index.html?page=<%= pagecount %>">Last</a>
+        </li>
+    </ul> 
         <!-- 换页按钮 -->
     </div>
 
@@ -83,6 +103,10 @@
 <![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 <!-- <script src="assets/js/app.js"></script> -->
-
+<script src="assets/js/pagination.js"></script>
+<script>
+    // 分页函数
+$(pagination())
+</script>
 </body>
 </html>
